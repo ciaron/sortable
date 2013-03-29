@@ -1,0 +1,11 @@
+{% load url from future %}
+
+{% if entry_list %}
+    <ul>
+    {% for entry in entry_list %}
+        <li><a href="{% url 'detail' entry.id %}">{{ entry.name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No entries are available.</p>
+{% endif %}
