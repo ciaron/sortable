@@ -7,36 +7,59 @@
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css">
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+
+<script type="text/javascript" language="javascript">
+  $(document).ready(function() {
+    $("#sortable").sortable({
+
+      update: function(event, ui) {
+        var serial = $('#sortable').sortable('serialize');
+
+        $.ajax({
+          url: "{% url 'index' %}",
+          type: "post",
+          data: { 'content': serial, 'csrfmiddlewaretoken' : '{{csrf_token}}' }
+        });
+      },
+
+    }).disableSelection();
+  });
+</script>
+
 </head>
 <body>
 
-
 <form method="post" action="">
-{% csrf_token %}
-{{ formset.management_form }}
-<button type="submit" class="btn">Save all changes</button>
 
-<ul id="sortable">
-{% for form in formset %}
-<li>{{ form }}</li>
-{% endfor %}
-</ul>
+    {% csrf_token %}
+    {{ formset.management_form }}
 
-{% if entry_list %}
+    <button type="submit" class="btn">Save all changes</button>
 
-    <ul>
-    {% for entry in entry_list %}
-        <li><a href="{% url 'detail' entry.id %}">{{ entry.name }}</a>
-        </li>
+    <ul id="sortable">
+    {% for form in formset %}
+    <li id="entry_{{entry.id}}" class="ui-state-default">
+        {{ form }}
+    </li>
     {% endfor %}
     </ul>
+
+    {% if entry_list %}
+
+        <ul>
+        {% for entry in entry_list %}
+            <li><a href="{% url 'detail' entry.id %}">{{ entry.name }}</a>
+            </li>
+        {% endfor %}
+        </ul>
+
+    {% else %}
+        <p>No entries are available.</p>
+    {% endif %}
 
 </form>
 
 <script>$("#sortable").sortable();</script>
 
-{% else %}
-    <p>No entries are available.</p>
-{% endif %}
 </body>
 </html>

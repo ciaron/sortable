@@ -12,6 +12,7 @@ def index(request):
     EntryFormSet = modelformset_factory(Entry, extra=0)
 
     if request.method == 'POST':
+        return HttpResponse("got POST")
         formset = EntryFormSet(request.POST)
 
         if formset.is_valid():
