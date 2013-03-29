@@ -1,11 +1,42 @@
 {% load url from future %}
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>sortable demo</title>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css">
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+</head>
+<body>
+
+
+<form method="post" action="">
+{% csrf_token %}
+{{ formset.management_form }}
+<button type="submit" class="btn">Save all changes</button>
+
+<ul id="sortable">
+{% for form in formset %}
+<li>{{ form }}</li>
+{% endfor %}
+</ul>
 
 {% if entry_list %}
+
     <ul>
     {% for entry in entry_list %}
-        <li><a href="{% url 'detail' entry.id %}">{{ entry.name }}</a></li>
+        <li><a href="{% url 'detail' entry.id %}">{{ entry.name }}</a>
+        </li>
     {% endfor %}
     </ul>
+
+</form>
+
+<script>$("#sortable").sortable();</script>
+
 {% else %}
     <p>No entries are available.</p>
 {% endif %}
+</body>
+</html>
