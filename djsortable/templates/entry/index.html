@@ -14,7 +14,7 @@
 
       update: function(event, ui) {
         var serial = $('#sortable').sortable('serialize');
-
+        alert(serial);
         $.ajax({
           url: "{% url 'index' %}",
           type: "post",
@@ -38,12 +38,13 @@
 
     <ul id="sortable">
     {% for form in formset %}
-    <li id="entry_{{entry.id}}" class="ui-state-default">
+    <li id="entry_{{ forloop.counter0  }}" class="ui-state-default">
         {{ form }}
     </li>
     {% endfor %}
     </ul>
 
+{% comment %}
     {% if entry_list %}
 
         <ul>
@@ -56,6 +57,7 @@
     {% else %}
         <p>No entries are available.</p>
     {% endif %}
+{% endcomment %}
 
 </form>
 

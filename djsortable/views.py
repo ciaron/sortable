@@ -13,6 +13,7 @@ def index(request):
 
     if request.method == 'POST':
         return HttpResponse("got POST")
+
         formset = EntryFormSet(request.POST)
 
         if formset.is_valid():
