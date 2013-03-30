@@ -14,18 +14,19 @@ def index(request):
     if request.method == 'POST':
         return HttpResponse("got POST")
 
-        formset = EntryFormSet(request.POST)
+        #formset = EntryFormSet(request.POST)
 
-        if formset.is_valid():
-            formset.save()
-            messages.info(request, "Changes saved!")
-        else:
-            pass
+        #if formset.is_valid():
+        #    formset.save()
+        #    messages.info(request, "Changes saved!")
+        #else:
+        #    pass
 
     entry_list = Entry.objects.order_by('order')
     formset = EntryFormSet()
 
-    context = {'entry_list': entry_list, 'formset': formset}
+    #context = {'entry_list': entry_list, 'formset': formset}
+    context = {'entry_list': entry_list}
 
     return render_to_response('entry/index.html', context, context_instance=RequestContext(request))
 

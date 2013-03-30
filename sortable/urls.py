@@ -8,7 +8,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^$', views.index, name='index'),
+    #url(r'^$', views.index, name='index'),
 
     url(r'^entries/', include('djsortable.urls')),
 

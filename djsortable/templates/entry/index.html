@@ -14,11 +14,11 @@
 
       update: function(event, ui) {
         var serial = $('#sortable').sortable('serialize');
-        alert(serial);
+//        alert(serial);
         $.ajax({
           url: "{% url 'index' %}",
           type: "post",
-          data: { 'content': serial, 'csrfmiddlewaretoken' : '{{csrf_token}}' }
+          data: { 'content': serial, 'csrfmiddlewaretoken' : '{{ csrf_token }}' } 
         });
       },
 
@@ -29,37 +29,14 @@
 </head>
 <body>
 
-<form method="post" action="">
-
-    {% csrf_token %}
-    {{ formset.management_form }}
-
-    <button type="submit" class="btn">Save all changes</button>
-
     <ul id="sortable">
-    {% for form in formset %}
-    <li id="entry_{{ forloop.counter0  }}" class="ui-state-default">
-        {{ form }}
+    {% for entry in entry_list %}
+    <li id="entry_{{ forloop.counter0 }}" class="ui-state-default">
+        {{ entry }}
     </li>
     {% endfor %}
     </ul>
 
-{% comment %}
-    {% if entry_list %}
-
-        <ul>
-        {% for entry in entry_list %}
-            <li><a href="{% url 'detail' entry.id %}">{{ entry.name }}</a>
-            </li>
-        {% endfor %}
-        </ul>
-
-    {% else %}
-        <p>No entries are available.</p>
-    {% endif %}
-{% endcomment %}
-
-</form>
 
 <script>$("#sortable").sortable();</script>
 
