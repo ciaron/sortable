@@ -9,6 +9,7 @@ from djsortable.models import Entry
 def index(request):
 
     if request.method == 'POST':
+
         # request.POST['content'] is a query string like 'entry[]=3&entry[]=2&entry[]=1'
         # convert to a QueryDict so we can do things with it
         entries = QueryDict(request.POST['content'])
@@ -19,11 +20,10 @@ def index(request):
             entry.order = index
             entry.save()
 
-        #return HttpResponse("got POST")
+    entry_list1 = Entry.objects.order_by('order')[:2]
+    entry_list2 = Entry.objects.order_by('order')[2:]
 
-    entry_list = Entry.objects.order_by('order')
-
-    context = {'entry_list': entry_list}
+    context = {'entry_list1': entry_list1, 'entry_list2': entry_list2}
 
     return render_to_response('entry/index.html', context, context_instance=RequestContext(request))
 

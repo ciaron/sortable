@@ -10,10 +10,11 @@
 
 <script type="text/javascript" language="javascript">
   $(document).ready(function() {
-    $("#sortable").sortable({
+    $("#sortable1").sortable({
+      connectWith: ".connectedSortable",
 
       update: function(event, ui) {
-        var serial = $('#sortable').sortable('serialize');
+        var serial = $('#sortable1').sortable('serialize');
         $.ajax({
           url: "{% url 'index' %}",
           type: "post",
@@ -22,22 +23,32 @@
       },
 
     }).disableSelection();
+
+    $("#sortable2").sortable({
+      connectWith: ".connectedSortable",
+
+    }).disableSelection();
   });
 </script>
 
 </head>
 <body>
 
-    <ul id="sortable">
-    {% for entry in entry_list %}
+    <ul id="sortable1" class="connectedSortable">
+    {% for entry in entry_list1 %}
     <li id="entry_{{ entry.id }}" class="ui-state-default">
         {{ entry }}
     </li>
     {% endfor %}
     </ul>
 
-
-<script>$("#sortable").sortable();</script>
+    <ul id="sortable2" class="connectedSortable">
+    {% for entry in entry_list2 %}
+    <li id="entry_{{ entry.id }}" class="ui-state-default">
+        {{ entry }}
+    </li>
+    {% endfor %}
+    </ul>
 
 </body>
 </html>
