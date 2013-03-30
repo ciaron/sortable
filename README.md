@@ -17,13 +17,19 @@ Main bits:
 To use: 
 
 It should work standalone:
+
 git clone
+
 python manage.py syncdb, runserver etc. 
 
 If not, drop me line.
 
 Links:
+
 http://rstrobl.com/blog/2012/01/19/sorting-django-model-instances-jqueryui-sortable/
+
 http://jqueryui.com/sortable/
+
 https://github.com/ciaron/sortable
+
 https://docs.djangoproject.com/en/dev/ref/request-response/#querydict-objects
