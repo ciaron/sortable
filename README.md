@@ -12,7 +12,8 @@ Main bits:
 1. A Django model called "Entry" which has a sort order field (err, called "order"), an IntegerField
 2. `<UL class="sortable">` in the template djsortable/templates/entry/index.html which uses jQuery-UI's "sortable" widget, and can be dragged-and-dropped
 3. Javascript in the template to make an AJAX POST when the items are dragged and dropped
-3. A view function called "index" which will process the POST and save changes to the model
+4. A view function called "index" which will process the POST and save changes to the model
+5. Two lists can be connected, items from the second can be dragged-and-dropped into the first and vice-versa, adding or removing them
 
 To use: 
 
