@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8">
 <title>sortable demo</title>
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/overcast/jquery-ui.css">
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
 
@@ -34,21 +34,21 @@
 </head>
 <body>
 
-    Top two:
+    <h3>Top two:</h3>
     <ul id="sortable1" class="connectedSortable">
     {% for entry in entry_list1 %}
-    <li id="entry_{{ entry.id }}" class="ui-state-default">
-        {{ entry }}
-    </li>
+      <li id="entry_{{ entry.id }}" class="ui-state-default">
+        <a href="{% url 'djsortable.views.detail' entry.id %}">{{ entry }}</a>
+      </li>
     {% endfor %}
     </ul>
 
-    The rest:
+    <h3>The rest:</h3>
     <ul id="sortable2" class="connectedSortable">
     {% for entry in entry_list2 %}
-    <li id="entry_{{ entry.id }}" class="ui-state-default">
-        {{ entry }}
-    </li>
+      <li id="entry_{{ entry.id }}" class="ui-state-default">
+        <a href="{% url 'djsortable.views.detail' entry.id %}">{{ entry }}</a>
+      </li>
     {% endfor %}
     </ul>
 
