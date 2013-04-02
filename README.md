@@ -15,6 +15,10 @@ Main bits:
 4. A view function called "index" which will process the POST and save changes to the model
 5. Two lists can be connected, items from the second can be dragged-and-dropped into the first and vice-versa, adding or removing them
 
+The most interesting parts are all in the template, for simplicity:
+
+    sortable/djsortable/templates/entry/index.html
+
 Requirements: 
 
 Tested with Django 1.4 on Ubuntu, but should work anywhere that Django does.
