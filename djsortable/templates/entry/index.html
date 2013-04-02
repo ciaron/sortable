@@ -34,6 +34,7 @@
 </head>
 <body>
 
+    Top two:
     <ul id="sortable1" class="connectedSortable">
     {% for entry in entry_list1 %}
     <li id="entry_{{ entry.id }}" class="ui-state-default">
@@ -42,6 +43,7 @@
     {% endfor %}
     </ul>
 
+    The rest:
     <ul id="sortable2" class="connectedSortable">
     {% for entry in entry_list2 %}
     <li id="entry_{{ entry.id }}" class="ui-state-default">

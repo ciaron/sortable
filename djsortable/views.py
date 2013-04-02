@@ -20,6 +20,7 @@ def index(request):
             entry.order = index
             entry.save()
 
+    # split our entries arbitrarily, so we can have two lists on the page...
     entry_list1 = Entry.objects.order_by('order')[:2]
     entry_list2 = Entry.objects.order_by('order')[2:]
 

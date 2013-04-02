@@ -22,10 +22,14 @@ Tested with Django 1.4 on Ubuntu, but should work anywhere that Django does.
 Usage:
 
     git clone
+    (optional) python manage.py reset sortable
     (optional) python manage.py syncdb
     python manage.py runserver
 
-surf to: http://127.0.0.1:8000/entries/
+main page: http://127.0.0.1:8000/entries/
+admin: http://127.0.0.1:8000/admin
+
+(admin username/password is ciaron/ciaron)
 
 Any problems, drop me line.
 
