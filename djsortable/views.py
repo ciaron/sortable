@@ -1,5 +1,5 @@
 #from django.template import Context, loader
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 from django.http import Http404, HttpResponse, QueryDict
 from django.template import RequestContext
 from django.contrib import messages
@@ -26,11 +26,11 @@ def index(request):
 
     context = {'entry_list1': entry_list1, 'entry_list2': entry_list2}
 
-    return render_to_response('entry/index.html', context, context_instance=RequestContext(request))
+    return render(request, 'entry/index.html', context)
 
 def detail(request, entry_id):
     try:
         entry = Entry.objects.get(pk=entry_id)
     except Entry.DoesNotExist:
         raise Http404
-    return render_to_response('entry/detail.html', {'entry': entry})
+    return render(request, 'entry/detail.html', {'entry': entry})
